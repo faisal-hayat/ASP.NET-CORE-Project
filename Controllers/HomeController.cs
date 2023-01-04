@@ -1,4 +1,5 @@
-﻿using ExampleProject.Models;
+﻿// importing namespaces
+using ExampleProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
