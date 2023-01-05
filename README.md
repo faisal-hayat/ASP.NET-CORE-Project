@@ -73,3 +73,15 @@ make-migration [migration_name]
 update-database
 ```
 --- ---
+## Validating the form on client side
+
+- Add Following line of code at the end of the view
+```C#
+<!-- Add Partial View -->
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
+```
+--- ---
