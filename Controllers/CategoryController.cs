@@ -2,6 +2,7 @@
 using ExampleProject.Data;
 using ExampleProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace ExampleProject.Controllers
 {
@@ -23,7 +24,31 @@ namespace ExampleProject.Controllers
 
         public IActionResult Create()
         {
+            // This is the default method
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Category obj)
+        {
+            // get data from form submitted by view
+            // validate it and add it to the SQL Sever
+            if (ModelState.IsValid)
+            {
+                // Add it to the Categories table in database
+                _db.Categories.Add(obj);
+                // Save the changes
+                _db.SaveChanges();
+                // After saving the data, redirect it to the "Index" Page of the Create View
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // Return the default Create View
+                return View();
+            }
+        }
+
     }
 }
