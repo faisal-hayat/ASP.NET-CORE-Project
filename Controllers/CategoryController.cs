@@ -97,24 +97,10 @@ namespace ExampleProject.Controllers
             {
                 return NotFound();
             }
-            return View(category);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public IActionResult Delete(Category obj)
-        {
-            if (ModelState.IsValid)
-            {
-                // we need to update the existing data
-                _db.Categories.Remove(obj);
-                _db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            else
-            {
-                return View();
-            }
+            _db.Categories.Remove(category);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+           // return View(category);
         }
     }
 
