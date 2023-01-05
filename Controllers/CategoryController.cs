@@ -20,5 +20,10 @@ namespace ExampleProject.Controllers
             // passing it ot the view, so that we can use it in the view
             return View(objCategoryList);
         }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
     }
 }

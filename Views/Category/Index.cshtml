@@ -5,39 +5,58 @@
     ViewData["Title"] = "Index";
 }
 <!-- This is Category Home View -->
-<h1>
-    Category
-</h1>
-<table class="table table-bordered table-striped" style="width: 100%">
-    <thead>
 
-        <tr>
+<div class="container p-3">
+    <div class="row pt-4">
+        
+        <div class="col-6">
+            <h2 class="text-primary">
+                Category List
+            </h2>
+        </div>
 
-            <th>
-                Category Name
-            </th>
+        <div class="col-6 text-end">
+            <a class="btn btn-primary" asp-controller="Category" asp-action="Create">
+                <i class="bi bi-plus-circle"></i> &nbsp; Create New Category
+            </a>
+        </div>
 
-            <th>
-                Display Order
-            </th>
+    </div>
+    <br />
+    <br />
+    <table class="table table-bordered table-striped" style="width: 100%">
+        <thead>
 
-        </tr>
-
-    </thead>
-    <tbody>
-        @foreach (var obj in Model)
-        {
             <tr>
-                <td width="50%">
-                    @obj.Name
-                </td>
 
-                <td width="30%">
-                    @obj.DisplayOrder
-                </td>
+                <th>
+                    Category Name
+                </th>
+
+                <th>
+                    Display Order
+                </th>
 
             </tr>
 
-        }
-    </tbody>
-</table>
+        </thead>
+
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="50%">
+                        @obj.Name
+                    </td>
+
+                    <td width="30%">
+                        @obj.DisplayOrder
+                    </td>
+
+                </tr>
+
+            }
+        </tbody>
+    </table>
+</div>
+
