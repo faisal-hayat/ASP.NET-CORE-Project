@@ -50,5 +50,72 @@ namespace ExampleProject.Controllers
             }
         }
 
+        // Adding functionality for Edit function
+        public IActionResult Edit(int? id)
+        {
+            // validate the id
+            if (id==0 || id==null)
+            {
+                return NotFound();
+            }
+            // get the data based on id
+            var category = _db.Categories.Find(id);
+            if (category==null)
+            {
+                // push data to the view
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                // we need to update the existing data
+                _db.Categories.Update(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        public IActionResult Delete(int? id)
+        {
+            if (id==0 || id == null)
+            {
+                return NotFound();
+            }
+
+            var category = _db.Categories.Find(id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+            return View(category);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(Category obj)
+        {
+            if (ModelState.IsValid)
+            {
+                // we need to update the existing data
+                _db.Categories.Remove(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View();
+            }
+        }
     }
+
 }
