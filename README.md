@@ -28,7 +28,7 @@ app.MapControllerRoute(
   },
   "AllowedHosts": "*",
   "ConnectionStrings": {
-    "DefaultConnection": "Server=DESKTOP-6DNJ4RQ;Database=Bulky;Trusted_Connection=True;TrustServerCertificate=True;"
+    "DefaultConnection": "Server=[server-name];Database=Bulky;Trusted_Connection=True;TrustServerCertificate=True;"
   }
 }
 ```
